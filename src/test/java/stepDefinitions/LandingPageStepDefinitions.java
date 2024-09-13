@@ -34,7 +34,7 @@ public class LandingPageStepDefinitions {
     }
 
     @Given("On the landing page I add some items in the Cart")
-    public void i_add_some_items_in_the_cart(List<String> items) throws InterruptedException {
+    public void i_add_some_items_in_the_cart(List<String> items){
         for (String item: items){
             addAnItem(item);
         }
