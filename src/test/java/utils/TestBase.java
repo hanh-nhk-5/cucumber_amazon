@@ -2,7 +2,6 @@ package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import java.io.IOException;
 
 public class TestBase {
     private WebDriver driver;

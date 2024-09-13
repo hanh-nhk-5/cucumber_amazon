@@ -40,7 +40,7 @@ public class LandingPageStepDefinitions {
         }
     }
 
-    private void addAnItem(String item) throws InterruptedException {
+    private void addAnItem(String item){
         LandingPage landingPage= testBaseContext.pageObjectManager.getLandingPage();
         landingPage.search(item);
         SearchResultPage searchResultPage= testBaseContext.pageObjectManager.getSearchResultPage();

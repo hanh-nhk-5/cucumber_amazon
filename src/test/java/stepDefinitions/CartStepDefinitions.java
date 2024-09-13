@@ -13,7 +13,7 @@ public class CartStepDefinitions {
     }
 
     @When("I delete all items")
-    public void i_I_delete_all_items() throws InterruptedException {
+    public void i_I_delete_all_items() {
         CartPage cardPage= testBaseContext.pageObjectManager.getCartPage();
         cardPage.clearCart();
     }
