@@ -3,7 +3,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class MasterPage extends CommonPage{
@@ -11,7 +10,6 @@ public class MasterPage extends CommonPage{
     public MasterPage(WebDriver driver){
         super(driver);
         this.driver= driver;
-//        PageFactory.initElements(this.driver, this);
     }
 
     final String navLinkAccountId= "nav-link-accountList";

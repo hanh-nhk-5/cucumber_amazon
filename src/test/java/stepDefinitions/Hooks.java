@@ -6,9 +6,7 @@ import io.cucumber.java.Scenario;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import pageObjects.MasterPage;
 import pageObjects.NotRobotPage;
-import pageObjects.SignInPage;
 import utils.TestBaseContext;
 
 import java.io.File;

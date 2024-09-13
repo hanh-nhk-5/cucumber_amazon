@@ -48,7 +48,7 @@ public class LandingPageStepDefinitions {
     }
 
     @When("I navigate to Cart page")
-    public void i_navigate_to_Cart_page() throws InterruptedException {
+    public void i_navigate_to_Cart_page(){
         LandingPage landingPage= testBaseContext.pageObjectManager.getLandingPage();
         landingPage.openCart();
     }

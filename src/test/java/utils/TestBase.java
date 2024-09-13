@@ -2,16 +2,11 @@ package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 public class TestBase {
     private WebDriver driver;
-    public WebDriver getWebDriver() throws IOException {
+    public WebDriver getWebDriver() {
         if(driver == null){
             if(System.getProperty("BROWSER").trim().equalsIgnoreCase("firefox"))
                 driver= WebDriverManager.firefoxdriver().create();

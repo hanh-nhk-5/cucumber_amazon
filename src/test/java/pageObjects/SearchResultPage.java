@@ -1,6 +1,5 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,16 +15,16 @@ public class SearchResultPage extends MasterPage {
         PageFactory.initElements(this.driver,this);
     }
 
-    @FindBy(id ="//div[contains(@cel_widget_id, 'MAIN-SEARCH_RESULTS')]")
-    List<WebElement> resultBoxes;
+//    @FindBy(id ="//div[contains(@cel_widget_id, 'MAIN-SEARCH_RESULTS')]")
+//    List<WebElement> resultBoxes;
 
     @FindBy(xpath="//button[contains(@class, 'a-button-text') and text()='Add to cart']")
     List<WebElement> addToCardButtons;
 
-    @FindBy(xpath="//div[@class='atfc-spinner']")
-    WebElement spinner;
+//    @FindBy(xpath="//div[@class='atfc-spinner']")
+//    WebElement spinner;
 
-    public void addToCart(int count) throws InterruptedException {
+    public void addToCart(int count){
         if(count<=0)
             return;
 
