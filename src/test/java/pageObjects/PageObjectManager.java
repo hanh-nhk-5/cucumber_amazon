@@ -8,11 +8,24 @@ public class PageObjectManager {
         this.driver= driver;
     }
 
+    public NotRobotPage getNotRobot(){
+        return new NotRobotPage(driver);
+    }
+
     public LandingPage getLandingPage(){
         return new LandingPage(driver);
     }
 
-    public NotRobotPage getNotRobot(){
-        return new NotRobotPage(driver);
+    public SearchResultPage getSearchResultPage(){
+        return new SearchResultPage(driver);
     }
+
+    public CartPage getCartPage(){
+        CartPage cartPage= new CartPage(driver);
+        cartPage.waitForElementAppeared(cartPage.cartTitle);
+        System.out.println("cart title: " + cartPage.cartTitle.getText());
+        return cartPage;
+    }
+
+
 }

@@ -13,11 +13,7 @@ public class TestBase {
     private WebDriver driver;
     public WebDriver getWebDriver() throws IOException {
         if(driver == null){
-//            FileInputStream fis= new FileInputStream(System.getProperty("user.dir") + "//src//test//resources//global.properties");
-//            Properties props= new Properties();
-//            props.load(fis);
-
-            if(System.getProperty("BROWSER").toString().trim().equalsIgnoreCase("firefox"))
+            if(System.getProperty("BROWSER").trim().equalsIgnoreCase("firefox"))
                 driver= WebDriverManager.firefoxdriver().create();
             else
                 driver= WebDriverManager.chromedriver().create();
