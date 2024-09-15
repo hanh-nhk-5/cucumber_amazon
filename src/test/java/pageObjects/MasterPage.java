@@ -4,12 +4,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class MasterPage extends CommonPage{
     WebDriver driver;
     public MasterPage(WebDriver driver){
         super(driver);
         this.driver= driver;
+        PageFactory.initElements(this.driver,this);
     }
 
     final String navLinkAccountId= "nav-link-accountList";
@@ -24,6 +26,9 @@ public class MasterPage extends CommonPage{
 
     @FindBy(id="nav-link-accountList-nav-line-1")
     WebElement helloAccount;
+
+    @FindBy(id="nav-logo-sprites")
+    WebElement landingPageNavigator;
 
     public SignInPage openSignInPage(){
         waitForElementLocated(By.id(navLinkAccountId));
@@ -44,5 +49,10 @@ public class MasterPage extends CommonPage{
 
     public boolean isSignedIn(){
         return !helloAccount.getText().trim().equalsIgnoreCase("Hello, sign in");
+    }
+
+    public void navigateToLandingPage(){
+        waitForElementClickable(landingPageNavigator);
+        landingPageNavigator.click();
     }
 }

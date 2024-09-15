@@ -17,7 +17,8 @@ public class LandingPageStepDefinitions {
 
     @Given("I am on the landing page")
     public void i_am_on_the_landing_page() {
-
+        MasterPage masterPage= this.testBaseContext.pageObjectManager.getMasterPage();
+        masterPage.navigateToLandingPage();
     }
     @When("I sign in")
     public void i_sign_in() throws InterruptedException {
@@ -51,6 +52,14 @@ public class LandingPageStepDefinitions {
     public void i_navigate_to_Cart_page(){
         LandingPage landingPage= testBaseContext.pageObjectManager.getLandingPage();
         landingPage.openCart();
+    }
+    @When("I see my account logged in")
+    public void i_see_my_account_logged_in() {
+        System.out.println("I see my account logged in");
+    }
+    @Then("I will logout")
+    public void i_will_logout_it() {
+        System.out.println("I will logout");
     }
 
 }

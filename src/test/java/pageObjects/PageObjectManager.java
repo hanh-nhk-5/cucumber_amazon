@@ -12,6 +12,10 @@ public class PageObjectManager {
         return new NotRobotPage(driver);
     }
 
+    public MasterPage getMasterPage(){
+        return new MasterPage(driver);
+    }
+
     public LandingPage getLandingPage(){
         return new LandingPage(driver);
     }
