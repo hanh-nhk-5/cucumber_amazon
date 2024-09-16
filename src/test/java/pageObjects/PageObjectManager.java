@@ -25,10 +25,7 @@ public class PageObjectManager {
     }
 
     public CartPage getCartPage(){
-        CartPage cartPage= new CartPage(driver);
-        cartPage.waitForElementAppeared(cartPage.cartTitle);
-        System.out.println("cart title: " + cartPage.cartTitle.getText());
-        return cartPage;
+        return new CartPage(driver);
     }
 
 
