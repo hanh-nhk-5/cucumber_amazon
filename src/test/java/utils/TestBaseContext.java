@@ -1,15 +1,19 @@
 package utils;
 
-import pageObjects.NotRobotPage;
 import pageObjects.PageObjectManager;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class TestBaseContext {
     public TestBase testBase;
     public PageObjectManager pageObjectManager;
+    public Map<String, Integer> itemTitlesAndAmountInCart;
+
+
     public TestBaseContext() throws IOException {
         FileInputStream fis= new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/global.properties");
         Properties props= new Properties();
@@ -25,5 +29,6 @@ public class TestBaseContext {
 
         testBase= new TestBase();
         pageObjectManager= new PageObjectManager(testBase.getWebDriver());
+        itemTitlesAndAmountInCart= new HashMap<>();
     }
 }

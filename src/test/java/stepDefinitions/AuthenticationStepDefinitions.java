@@ -4,7 +4,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import pageObjects.LandingPage;
 import pageObjects.MasterPage;
 import pageObjects.SignInPage;
 import utils.TestBaseContext;
@@ -15,10 +14,24 @@ public class AuthenticationStepDefinitions {
         this.testBaseContext= testBaseContext;
     }
 
-    @When("I sign in")
-    public void i_sign_in() throws InterruptedException {
+    @Given("I already signed in")
+    public void i_already_signed_in() throws InterruptedException {
         MasterPage masterPage= testBaseContext.pageObjectManager.getMasterPage();
-        SignInPage signInPage= masterPage.openSignInPage();
+        if(!masterPage.isSignedIn()){
+            SignInPage signInPage= masterPage.openSignInPage();
+            signIn(signInPage);
+        }
+    }
+
+    @When("I sign in")
+    public void signIn() throws InterruptedException {
+//        MasterPage masterPage= testBaseContext.pageObjectManager.getMasterPage();
+//        SignInPage signInPage= masterPage.openSignInPage();
+        SignInPage signInPage= testBaseContext.pageObjectManager.getSignInPage();
+        signIn(signInPage);
+    }
+
+    private void signIn(SignInPage signInPage) throws InterruptedException {
         signInPage.signIn(System.getProperty("USERNAME"), System.getProperty("PASSWORD"));
         Thread.sleep(10000);//to have enough time to input capcha manually, just in case
     }
@@ -29,23 +42,23 @@ public class AuthenticationStepDefinitions {
         Assert.assertTrue(masterPage.isSignedIn());
     }
 
-    @Given("I am on the website")
-    public void i_am_on_the_website() {
-    }
-
     @When("I navigate to Cart page")
     public void i_navigate_to_Cart_page(){
         MasterPage masterPage= this.testBaseContext.pageObjectManager.getMasterPage();
-        masterPage.openCart();
+        masterPage.navigateToCart();
     }
 
-
-    @When("I see my account logged in")
-    public void i_see_my_account_logged_in() {
-        System.out.println("I see my account logged in");
+    @When("I sign out")
+    public void i_sign_out() {
+        MasterPage masterPage= testBaseContext.pageObjectManager.getMasterPage();
+        masterPage.signOut();
     }
-    @Then("I will logout")
-    public void i_will_logout_it() {
-        System.out.println("I will logout");
+
+    @Given("I have not logged in yet")
+    public void i_have_not_logged_in_yet() {
+        MasterPage masterPage= testBaseContext.pageObjectManager.getMasterPage();
+        if(masterPage.isSignedIn()){
+            masterPage.signOut();
+        }
     }
 }

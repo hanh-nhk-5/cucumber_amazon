@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -27,13 +28,24 @@ public class MasterPage extends CommonPage{
     @FindBy(id="nav-link-accountList-nav-line-1")
     WebElement helloAccount;
 
+    @FindBy(id="nav-link-accountList")
+    WebElement accountAndListElement;
+
     @FindBy(id="nav-logo-sprites")
     WebElement landingPageNavigator;
+
+    @FindBy(id="nav-item-signout")
+    WebElement signOutButton;
 
     public SignInPage openSignInPage(){
         waitForElementLocated(By.id(navLinkAccountId));
         accountListDropdown.click();
         return new SignInPage(driver);
+    }
+
+    public void navigateToLandingPage(){
+        waitForElementClickable(landingPageNavigator, 5);
+        landingPageNavigator.click();
     }
 
     public void search(String text){
@@ -42,8 +54,8 @@ public class MasterPage extends CommonPage{
         searchBox.sendKeys(Keys.ENTER);
     }
 
-    public void openCart(){
-        waitForElementClickable(cartNavigator);
+    public void navigateToCart(){
+        waitForElementClickable(cartNavigator, 5);
         cartNavigator.click();
     }
 
@@ -51,8 +63,9 @@ public class MasterPage extends CommonPage{
         return !helloAccount.getText().trim().equalsIgnoreCase("Hello, sign in");
     }
 
-    public void navigateToLandingPage(){
-        waitForElementClickable(landingPageNavigator);
-        landingPageNavigator.click();
+    public void signOut(){
+        Actions actions= new Actions(driver);
+        actions.moveToElement(accountAndListElement)
+                .moveToElement(signOutButton).click().perform();
     }
 }

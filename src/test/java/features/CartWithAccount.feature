@@ -1,27 +1,27 @@
 Feature: Cart Functionality
-  Background: User logged in the website
-    Given I am on the website
-    When I sign in
-    Then I am logged in successfully
+  Background: User already signed in the website
+    Given I already signed in
 
-  Scenario: Empty Cart
-    Given I add some items in the Cart
+
+  @RegressionTest
+  Scenario: Empty Cart with Account
+    Given I add some items into the Cart
     |lamps for living room|
     |arm chair            |
-    When I navigate to Cart page
-    And I delete all items
+    When I delete all items on Cart
     Then The cart will be empty
 
-#  Scenario Outline: Cart is reserve after logout
-#    Given I add some items <items> in the Cart
-#    When I navigate to Cart page
-#    And modify the amount of items <amount>
-#    And I sign out
-#    And I sign in
-#    And I navigate to Cart page
-#    Then the cart will be the same as before logout
-#    Examples:
-#    |items                                        |amount|
-#    |tea pot, HexClad pan                         | 2, 7          |
-#    |tennis racket, tennis grip, tennis grip tape | 5, 4, 3       |
+  @SmokeTest
+  @RegressionTest
+  Scenario Outline: Cart should be reserved after sign out
+    Given The cart is empty
+    And I add some items <items> into the Cart
+    And On the Cart page, I modify amount of the added items in random order <amounts>
+    When I sign out
+    And I sign in
+    Then I should see all items in the Cart as before sign out
+    Examples:
+    |items                                        |amounts|
+    |tea pot, HexClad pan                         | 2, 7          |
+    |tea pot, armchair | 5, 4       |
 

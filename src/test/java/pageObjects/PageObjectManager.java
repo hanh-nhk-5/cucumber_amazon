@@ -16,6 +16,10 @@ public class PageObjectManager {
         return new MasterPage(driver);
     }
 
+    public SignInPage getSignInPage(){
+        return new SignInPage(driver);
+    }
+
     public LandingPage getLandingPage(){
         return new LandingPage(driver);
     }

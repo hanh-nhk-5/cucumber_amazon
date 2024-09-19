@@ -25,13 +25,13 @@ public class CommonPage {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void waitForElementDisappeared(WebElement element){
-        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
+    public void waitForElementDisappeared(WebElement element, int secs){
+        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(secs));
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
-    public void waitForElementClickable(WebElement element){
-        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(5));
+    public void waitForElementClickable(WebElement element, int secs){
+        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(secs));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
