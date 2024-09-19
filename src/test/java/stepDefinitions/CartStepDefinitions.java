@@ -21,7 +21,7 @@ public class CartStepDefinitions {
     }
 
     @Then("The cart will be empty")
-    public void checkCartBeEmpty() throws InterruptedException {
+    public void checkCartBeEmpty(){
         CartPage cardPage= testBaseContext.pageObjectManager.getCartPage();
         Assert.assertTrue(cardPage.isCartEmpty(), "Expected: Cart is empty. Actual: Cart is not empty");
     }
