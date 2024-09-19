@@ -20,10 +20,6 @@ public class PageObjectManager {
         return new SignInPage(driver);
     }
 
-    public LandingPage getLandingPage(){
-        return new LandingPage(driver);
-    }
-
     public SearchResultPage getSearchResultPage(){
         return new SearchResultPage(driver);
     }

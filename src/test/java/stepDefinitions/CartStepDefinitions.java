@@ -7,8 +7,6 @@ import org.testng.Assert;
 import pageObjects.CartPage;
 import pageObjects.MasterPage;
 import utils.TestBaseContext;
-
-import java.util.Iterator;
 import java.util.Map;
 
 public class CartStepDefinitions {
@@ -41,7 +39,7 @@ public class CartStepDefinitions {
     }
 
     @Given("^On the Cart page, I modify amount of the added items in random order (.+)$")
-    public void modifyAmountOfItemsInOrder(String amountStrings) throws InterruptedException {
+    public void modifyAmountOfItemsInOrder(String amountStrings){
         MasterPage masterPage= testBaseContext.pageObjectManager.getMasterPage();
         masterPage.navigateToCart();
 

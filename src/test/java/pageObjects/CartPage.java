@@ -57,11 +57,7 @@ public class CartPage extends MasterPage {
         }
     }
 
-    private WebElement findElement(String xPath){
-        return driver.findElement(By.xpath(xPath));
-    }
-
-    public boolean isCartEmpty() throws InterruptedException {
+    public boolean isCartEmpty() {
         List<WebElement> emptyCartTitles= this.driver.findElements(By.xpath(xpathEmptyCartTitle));
         if(!emptyCartTitles.isEmpty()){
             System.out.println("if(!emptyCartTitles.isEmpty()) - " + emptyCartTitles.get(0).getText());

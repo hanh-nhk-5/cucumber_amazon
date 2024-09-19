@@ -43,11 +43,6 @@ public class MasterPage extends CommonPage{
         return new SignInPage(driver);
     }
 
-    public void navigateToLandingPage(){
-        waitForElementClickable(landingPageNavigator, 5);
-        landingPageNavigator.click();
-    }
-
     public void search(String text){
         searchBox.clear();
         searchBox.sendKeys(text);
