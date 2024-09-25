@@ -20,7 +20,7 @@ public class Hooks {
 
     @Before
     public void scenarioPreparation() throws InterruptedException {
-        overcomeNotRobot();
+//        overcomeNotRobot();
     }
 
     private void overcomeNotRobot() throws InterruptedException {
